@@ -1,115 +1,125 @@
+require_relative "referee"
+
 class TicTacToe
-  attr_accessor :board
-  def initialize
-    @board = {
-      1 => 1,
-      2 => 2,
-      3 => 3,
-      4 => 4,
-      5 => 5,
-      6 => 6,
-      7 => 7,
-      8 => 8,
-      9 => 9 }
+  attr_accessor :game
+#  def initialize
+#    @board = {
+#      1 => 1,
+#      2 => 2,
+#      3 => 3,
+#      4 => 4,
+#      5 => 5,
+#      6 => 6,
+#      7 => 7,
+#      8 => 8,
+#      9 => 9 }
+#
+#    @player1 = 'x'
+#    @player2 = 'o'
+#    @counter = 9
+#  end
+#
+# # draw the board
+#  def draw_game
+#    puts "#{ @board[1] } | #{ @board[2] } | #{ @board[3] }"
+#    puts "---------"
+#    puts "#{ @board[4] } | #{ @board[5] } | #{ @board[6] }"
+#    puts "---------"
+#    puts "#{ @board[7]} | #{ @board[8]} | #{ @board[9] }"
+#    puts "---------"
+#  end
+#
+## define the players and assign them to X and O
+#  def startgame
+#    draw_game
+#    player1move
+#  end
+#
+#  def player1move
+#    if @counter != 0
+#      puts "Enter a number where you'd like to place an X"
+#      i = gets.chomp.to_i
+#      board[i] = @player1 if board[i].is_a? Integer
+#      updateboard
+#      @counter -= 1
+#      referee
+#      player2move
+#    else
+#      game_over
+#    end
+#  end
+#
+#  #updates the board after each player moves
+#  def updateboard
+#    draw_game
+#  end
+#
+#  def player2move
+#    if @counter != 0
+#      puts "Enter a number where you'd like to place an O"
+#      i = gets.chomp.to_i
+#      board[i] = @player2 if board[i].is_a? Integer
+#      updateboard
+#      @counter -= 1
+#      referee
+#      player1move
+#    else
+#      game_over
+#    end
+#  end
+#
+#  # checks to see if anyone has won the game
+#  def referee
+#    score = @board.values.to_a
+#    if @counter == 0
+#      game_draw
+#    else
+#      [@player1, @player2].each do |item|
+#          if score[0] == item && score[1] == item && score[2] == item
+#            game_over(item)
+#          elsif score[3] == item && score[4] == item && score[5] == item
+#            game_over(item)
+#          elsif score[6] == item && score[7] == item && score[8] == item
+#            game_over(item)
+#          elsif score[0] == item && score[3] == item && score[6] == item
+#            game_over(item)
+#          elsif score[1] == item && score[4] == item && score[7] == item
+#           game_over(item)
+#          elsif score[2] == item && score[5] == item && score[8] == item
+#            game_over(item)
+#          elsif score[0] == item && score[4] == item && score[8] == item
+#           game_over(item)
+#          elsif score[2] == item && score[4] == item && score[6] == item
+#           game_over(item)
+#          end
+#       end
+#     end
+#  end
+#
+#  def game_over(winner)
+#    puts "GAME OVER!  Winner is #{winner}"
+#  end
+#
+#  def game_draw
+#    puts "GAME OVER! You both lose."
+#  end
+#
+#
 
-    @player1 = 'x'
-    @player2 = 'o'
-    @counter = 9
-  end
 
- # draw the board
-  def draw_game
-    puts "#{ @board[1] } | #{ @board[2] } | #{ @board[3] }"
-    puts "---------"
-    puts "#{ @board[4] } | #{ @board[5] } | #{ @board[6] }"
-    puts "---------"
-    puts "#{ @board[7]} | #{ @board[8]} | #{ @board[9] }"
-    puts "---------"
-  end
-
-# define the players and assign them to X and O
-  def startgame
+  def self.run
+    @game = TicTacToe.new
     draw_game
-    player1move
+
   end
-
-  def player1move
-    if @counter != 0
-      puts "Enter a number where you'd like to place an X"
-      i = gets.chomp.to_i
-      board[i] = @player1 if board[i].is_a? Integer
-      updateboard
-      @counter -= 1
-      referee
-      player2move
-    else
-      game_over
-    end
-  end
-
-  #updates the board after each player moves
-  def updateboard
-    draw_game
-  end
-
-  def player2move
-    if @counter != 0
-      puts "Enter a number where you'd like to place an O"
-      i = gets.chomp.to_i
-      board[i] = @player2 if board[i].is_a? Integer
-      updateboard
-      @counter -= 1
-      referee
-      player1move
-    else
-      game_over
-    end
-  end
-
-  # checks to see if anyone has won the game
-  def referee
-    score = @board.values.to_a
-    if @counter == 0
-      game_draw
-    else
-      [@player1, @player2].each do |item|
-          if score[0] == item && score[1] == item && score[2] == item
-            game_over(item)
-          elsif score[3] == item && score[4] == item && score[5] == item
-            game_over(item)
-          elsif score[6] == item && score[7] == item && score[8] == item
-            game_over(item)
-          elsif score[0] == item && score[3] == item && score[6] == item
-            game_over(item)
-          elsif score[1] == item && score[4] == item && score[7] == item
-           game_over(item)
-          elsif score[2] == item && score[5] == item && score[8] == item
-            game_over(item)
-          elsif score[0] == item && score[4] == item && score[8] == item
-           game_over(item)
-          elsif score[2] == item && score[4] == item && score[6] == item
-           game_over(item)
-          end
-       end
-     end
-  end
-
-  def game_over(winner)
-    puts "GAME OVER!  Winner is #{winner}"
-  end
-
-  def game_draw
-    puts "GAME OVER! You both lose."
-  end
-
-
 end
 
 
-game = TicTacToe.new
-puts game.startgame
-p game.board.values.to_a
+TicTacToe.new
 
+
+#puts game.start_game
+#p game.board.values.to_a
 
 
 # array1.each_slice(3) do |row|
